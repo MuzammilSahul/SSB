@@ -53,10 +53,66 @@ Model Waveform
 
 Program
 
+am=7.5;
+
+fm=261;
+
+ac=15;
+
+fc=2610;
+
+fs=26100;
+
+t=0:1/fs:2/fm;
+
+Em1=am * cos(2 * 3.14 * fm * t);
+
+subplot(4,1,1);
+
+plot(t,Em1);
+
+Ec1=ac * cos(2 * 3.14 * fc * t);
+
+subplot(4,1,2);
+
+plot(t,Ec1);
+
+Eam1=ac * (1+Em1/ac). * cos(2 * 3.14 * fc * t);
+
+Eam2=ac * (-1+Em1/ac). *cos(2 * 3.14 * fc * t);
+
+Edsbsc1=Eam1+Eam2;
+
+Em2=am * sin(2 * 3.14 * fm * t);
+
+Ec2=ac * sin(2 * 3.14 * fc * t);
+
+Eam3=ac * (1+Em2/ac). * sin(2 * 3.14 * fc * t);
+
+Eam4=ac * (-1+Em2/ac). * sin(2 * 3.14 * fc * t);
+
+Edsbsc2=Eam3+Eam4;
+
+Eusb=Edsbsc1-Edsbsc2;
+
+subplot(4,1,3);
+
+plot(t,Eusb);
+
+Elsb=Edsbsc1+Edsbsc2;
+
+subplot(4,1,4);
+
+plot(t,Elsb);
+
+
 OUTPUT WAVEFORM
+
+<img width="1912" height="1187" alt="image" src="https://github.com/user-attachments/assets/f04b8950-5e67-465b-906a-e16f7977e41e" />
 
 TABULATION
 
+![WhatsApp Image 2026-02-13 at 14 22 11](https://github.com/user-attachments/assets/dc102b56-36a5-4ed5-8b87-dc4b6fd6bf7e)
 
 
 
